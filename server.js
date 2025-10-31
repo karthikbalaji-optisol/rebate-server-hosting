@@ -5,6 +5,9 @@ const { v4: uuidv4 } = require('uuid');
 const https = require('https');
 const cors = require('cors');
 
+
+const app = express();
+
 const corsOptions = {
     origin: '*', // or specify your SDK domain
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -12,11 +15,7 @@ const corsOptions = {
     credentials: false, // set to true only if you use cookies or auth headers with credentials
     optionsSuccessStatus: 200
   };
-const app = express();
 app.use(cors(corsOptions));
-  
-// Explicitly handle preflight
-app.options('*', cors(corsOptions));
 const PORT = process.env.PORT || 8082;
 
 // Configuration
